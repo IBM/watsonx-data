@@ -186,13 +186,13 @@ To set up the next exercise we will create additional tables in the newly create
 
 We will be creating 5 tables in the `retail` schema each from its own .csv file.
 
-| Table name    | csv data  file |
-| --------------| -------------- |
-| customer      | CUSTOMER.csv   |
-| orders        | ORDERS.csv     |
-| nation        | NATION.csv     |
-| lineitem      | LINEITEM.csv   |
-| part          | PART.csv       |
+| Table name    | csv data  file                 |
+| --------------| -------------------------------|
+| customer      | [CUSTOMER.csv](./CUSTOMER.csv) |
+| orders        | [ORDERS.csv](./ORDERS.csv)     |
+| nation        | [NATION.csv](./NATION.csv)     |
+| lineitem      | [LINEITEM.csv](./LINEITEM.csv) |
+| part          | [PART.csv](PART.csv)           |
 
 For this purpose, we will use the Data Manager capability in the wxd UI.
 
