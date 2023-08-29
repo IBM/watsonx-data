@@ -27,7 +27,7 @@ As part of this lab exercise, drill-down to the `tpcds` schema and select the `c
 Use the following recording as a guide, but feel free to explore other tables in the "tiny" or "sf1" schema.
 
 
-<video src="./images/DBeaver.mp4"></video>
+[DBeaver viewing tables and SQL example]("./images/DBeaver.mp4")
 
 
 ---
