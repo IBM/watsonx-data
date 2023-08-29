@@ -1,0 +1,209 @@
+I. Developer Edition Setup
+
+Introduction:
+
+Explore:
+
+   from wxd browser based experience
+   from dbeaver
+   
+
+
+
+   from presto-cli
+   from python
+   access presto-ui & look at detailed query plans or cancel queries
+data for customer, lineitem, orders, part
+
+script to load into iceberg_data/retail/<tablename>
+
+
+Setup:
+
+   Customer dimension table in PostgreSQL,Other tables in Iceberg (for federated querying)
+
+   Create a postgreSQL database for Customer data, DDL & Load Customer table sample data
+
+   Attach postgreSQL db to wxd and create a catalog
+
+
+II. Organizing data: Catalogs, Schemas and Tables
+
+Intro:  information about what Catalogs, Schemas and tables are.  
+How customers bring their own buckets and add a bucket (bonus exercise)
+
+Exercise 1:
+
+  Create a schema -  "retail" with location in existing Catalog - iceberg_data
+  Create an example table 'sample' and insert data and then select using the browser UI  
+
+
+Exercise 2:
+
+    Create tables in schema "retail"  and load with sample data  (How to load samples ?)
+      - orders, lineitems , parts
+
+III. Querying for data with Presto
+
+select from orders
+
+lineitems, parts ..
+
+Exercise 1: 
+     Find top 20 orders with the largest spend ($)
+
+     SELECT
+  t1.orderkey,
+  t2.custkey,
+  t2.totalprice,
+FROM
+  "iceberg_data"."retail"."lineitem" as t1,
+  "iceberg_data"."retail"."orders" as t2
+where
+  t1.orderkey = t2.orderkey
+  AND t2.custkey = t3.custkey
+order by
+  totalprice asc
+LIMIT
+  20;
+
+Exercise 2:
+     Top 10 most popular parts
+
+select
+  t1.partkey,
+  t2.name,
+  t1.quantity,
+  t2.retailprice
+from
+  "iceberg_data"."retail".lineitem t1,
+  "iceberg_data"."retail".part t2
+where
+  t1.partkey = t2.partkey
+order by
+  quantity
+limit
+  10
+
+with 
+spatial functions
+
+IV. Federate external data
+
+Intro:
+
+Join with PostgresSQL table
+
+Exercise 1:
+Find the top 20 customers (by order $)
+
+SELECT
+  t1.orderkey,
+  t2.custkey,
+  t2.totalprice,
+  t3.name
+FROM
+  "iceberg_data"."retail"."lineitem" as t1,
+  "iceberg_data"."retail"."orders" as t2,
+  "iceberg_data"."retail"."customer" as t3
+where
+  t1.orderkey = t2.orderkey
+  AND t2.custkey = t3.custkey
+order by
+  totalprice asc
+LIMIT
+  10;
+
+Exercise 2:
+
+Find the top 20 most expensive parts sold and the customers who bought them
+
+SELECT
+  t1.partkey,
+  t3.name as "part name",
+  t3.retailprice,
+  t4.name as "customer name"
+FROM
+  "tpch"."sf1"."lineitem" as t1,
+  "tpch"."sf1"."orders" as t2,
+  "tpch"."sf1"."part" as t3,
+  "tpch"."sf1"."customer" as t4
+where
+  t1.orderkey = t2.orderkey
+  AND t1.partkey = t3.partkey
+  AND t2.custkey = t4.custkey
+order by
+  t3.retailprice asc
+LIMIT
+  20;
+
+Exercise 3: Find the customers who have placed Large quantity orders
+
+(large quantity is > 300)
+
+select
+  t1.name as c_name,
+  t1.custkey as c_custkey,
+  t2.orderkey as o_orderkey,
+  t2.orderdate as o_orderdate,
+  t2.totalprice as o_totalprice,
+  sum(t3.quantity)
+from
+  "tpch"."sf1".customer t1,
+  "tpch"."sf1".orders t2,
+  "tpch"."sf1".lineitem t3
+where
+  t2.orderkey in (
+    select
+      t4.orderkey
+    from
+      "tpch"."sf1".lineitem t4
+    group by
+      t4.orderkey
+    having
+      sum(t4.quantity) > 300
+  )
+  and t1.custkey = t2.custkey
+  and t2.orderkey = t3.orderkey
+group by
+  t1.name,
+  t1.custkey,
+  t2.orderkey,
+  t2.orderdate,
+  t2.totalprice
+order by
+  t2.totalprice desc,
+  t2.orderdate
+
+
+V.  Access Policies: Securing data
+
+VI. Bringing data into your Lakehouse
+    Inspect spark config
+    Read CSV file and create data frame
+    Load data frame to LH
+
+VII. Analytics and ML with Spark
+    Analytics and ML with Spark
+    Connect to LH and do some simple queries using spark-sql [ DR to create some simple SELECT, JOIN etc]
+    Connect to LH-Iceberg using PySpark and use DF to read, join data
+    Some spark spatial functions
+    Some Spark ML model training + inferencing
+
+VIII. Explore GraphQL for Data apps, powered by StepZen
+    Explore GraphQL for data apps, powere by stepzen
+    Use provided schema and deploy to stepzen
+    Run queries using iGraphQL, "stepzen request"
+    Do introspection of LH-Presto to generate schema
+    Deploy schema and run queries
+    Do introspection of PostgreSQL to generate schema
+    Establish federated query
+    Deploy and Run federated query
+
+
+
+
+
+
+
+
