@@ -22,8 +22,9 @@ TechXchange 2023 Hands on lab Session 3509:  https://reg.tools.ibm.com/flow/ibm/
     - [Exercise 1: List catalogs and schema](#exercise-1-list-catalogs-and-schema)
     - [Exercise 2: Select from a table](#exercise-2-select-from-a-table)
     - [Exercise 3: Create schema in the iceberg\_data Catalog](#exercise-3-create-schema-in-the-iceberg_data-catalog)
-    - [Exercise 4: Create tables from csv files](#exercise-4-create-tables-from-csv-files)
-    - [Exercise 5: View the physical data organization in the Object store bucket](#exercise-5-view-the-physical-data-organization-in-the-object-store-bucket)
+    - [Exercise 4: Explore with DBeaver](#exercise-4-explore-with-dbeaver)
+    - [Exercise 5: Create tables from csv files](#exercise-5-create-tables-from-csv-files)
+    - [Exercise 6: View the physical data organization in the Object store bucket](#exercise-6-view-the-physical-data-organization-in-the-object-store-bucket)
   - [Querying for data with Presto](#querying-for-data-with-presto)
     - [Access Presto from Python](#access-presto-from-python)
       - [Using python-run](#using-python-run)
@@ -91,12 +92,6 @@ lhconsole-ui                            running                 0.0.0.0:9443->84
  
   The Presto Query monitoring UI is available via https://localhost:8443
 
-
-- There is a convenient [DBeaver](https://dbeaver.io/) installation in the virtual machine.
-
-  Launch DBeaver by clicking on the apps 
-
-    --insert pic---
 
 ---
 
@@ -178,8 +173,16 @@ ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute "CREATE SCHEMA IF NOT
 
 ```
 
+### Exercise 4: Explore with DBeaver
 
-### Exercise 4: Create tables from csv files
+- There is a convenient [DBeaver](https://dbeaver.io/) installation in the virtual machine.
+
+  Proceed to:  [Launching and using DBeaver with wxd](DBeaver.md)  
+
+  You can also navigate the Catalogs and schema in your wxd lakehouse using DBeaver and run SQL queries.
+
+
+### Exercise 5: Create tables from csv files
 
 To set up the next exercise we will create additional tables in the newly created `retail` schema and load them with sample data.
 
@@ -188,18 +191,18 @@ We will be creating 5 tables in the `retail` schema each from its own .csv file.
 
 | Table name    | csv data  file                 |
 | --------------| -------------------------------|
-| customer      | [CUSTOMER.csv](./CUSTOMER.csv) |
-| orders        | [ORDERS.csv](./ORDERS.csv)     |
-| nation        | [NATION.csv](./NATION.csv)     |
-| lineitem      | [LINEITEM.csv](./LINEITEM.csv) |
-| part          | [PART.csv](PART.csv)           |
+| customer      | [CUSTOMER.csv](./data/CUSTOMER.csv) |
+| orders        | [ORDERS.csv](./data/ORDERS.csv)     |
+| nation        | [NATION.csv](./data/NATION.csv)     |
+| lineitem      | [LINEITEM.csv](./data/LINEITEM.csv) |
+| part          | [PART.csv](./data/PART.csv)         |
 
 For this purpose, we will use the Data Manager capability in the wxd UI.
 
 --insert pics--
 
 
-### Exercise 5: View the physical data organization in the Object store bucket
+### Exercise 6: View the physical data organization in the Object store bucket
 
 Now that we have loaded some data into the `iceberg_data` catalog, we will look at how the data is physically stored in iceberg tables.
 
