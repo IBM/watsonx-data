@@ -1,5 +1,5 @@
 
-## DBeaver Tips
+## Connecting to wxd Presto using DBeaver
 
 In the lab environment, you will see a pre-installed version of DBeaver community edition.
 
@@ -8,7 +8,7 @@ In the lab environment, you will see a pre-installed version of DBeaver communit
 You can launch DBeaver by clicking on `Applications` under the `Programming` folder in the Linux VM as shown below:
 
 
-<img src="./images/DBeaver_launch.png" width="50%" height="50%">
+<img src="./images/DBeaver_launch.png" width="25%" height="25%"></img>
 
 
 ### Navigation
@@ -26,8 +26,7 @@ As part of this lab exercise, drill-down to the `tpcds` schema and select the `c
 
 Use the following recording as a guide, but feel free to explore other tables in the "tiny" or "sf1" schema.
 
-
-[DBeaver viewing tables and SQL example]("./images/DBeaver.mp4")
+[DBeaver viewing tables and SQL example](./images/DBeaver.mp4)
 
 
 ---

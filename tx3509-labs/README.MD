@@ -7,17 +7,13 @@
 TechXchange 2023 Hands on lab Session 3509:  https://reg.tools.ibm.com/flow/ibm/techxchange23/attendeeportal/page/sessioncatalog?search=3509
 
 
-<CENTER>
-<B>Coming soon</B>
-</CENTER>
-
 ---
 
 - [Dive into the watsonx.data Lakehouse with the Developer Edition](#dive-into-the-watsonxdata-lakehouse-with-the-developer-edition)
   - [Lab Setup](#lab-setup)
     - [Start all wxd containers](#start-all-wxd-containers)
     - [Check the status of all the containers](#check-the-status-of-all-the-containers)
-    - [Explore the wxd Lakehouse](#explore-the-wxd-lakehouse)
+    - [A Quick tour of the wxd user experience](#a-quick-tour-of-the-wxd-user-experience)
   - [Organizing data: Catalogs, Schemas and Tables](#organizing-data-catalogs-schemas-and-tables)
     - [Exercise 1: List catalogs and schema](#exercise-1-list-catalogs-and-schema)
     - [Exercise 2: Select from a table](#exercise-2-select-from-a-table)
@@ -66,25 +62,51 @@ lhconsole-ui                            running                 0.0.0.0:9443->84
 
 ```
 
-### Explore the wxd Lakehouse
+### A Quick tour of the wxd user experience
 
-- To open the console UI, visit: https://localhost:9443 in your browser. 
+From Applications -> Internet in your lab VM, open up Google Chrome.
 
-    In the Infrastructure page you can see which buckets and catalogs are already present. 
+- To open the console UI, visit: https://localhost:9443 in the browser.  
 
-    Use the Data Manager view to explore the catalogs and schema and the SQL view to run queries.
+    Use the menu on the left to navigate to various pages in the wxd user experience.
 
-    The iceberg_data bucket and catalog is where we will load data into new tables and run queries. In the meantime, you can use the out of the box tpcds schema and explore 
+    <center>
+    <img src="./images/wxd-ui-nav.png" width="25%" height="25%"></img>
+    </center>
 
-    Note: this is a very small VM environment, so use only the "tiny" or "sf1" schema. The other schemas have larger datasets that you may not always be able to query.
+    - In the **Infrastructure** page you can see which buckets and catalogs are already present. 
+
+    - Use the **Data Manager** view to explore the catalogs and schema and the SQL view to run queries.
+
+    The `iceberg_data` _catalog_ and `iceberg-bucket` _bucket_ is where we will load data into new tables and run queries. In the meantime, you can use the out of the box `tpcds` schema and explore 
+
 
     In the Data Manager view, expand on the left tree and select tables and view the table schema and sample data on the right.
 
-    --insert pic---
+    Here is an example of how to inspect the `customer` table in the `sf1` schema in the `tpcds` catalog.
 
-    From the SQL Query Workspace, choose the tpcds tables and generate a SELECT staement 
+    <center>
+    <img src="./images/wxd-dm.png" width="50%" height="50%"></img >
+    </center>
 
-    --insert pic---
+    **Note**: this is a very small VM environment, so use only the `tiny` or `sf1` schema. The other schemas have larger datasets that you may not always be able to query.
+
+    From the SQL Query Workspace, choose one of the tpcds tables and generate a SELECT statement 
+
+    <center>
+      <img src="./images/wxd-gen-select.png" width="30%" height="30%"></img >
+    </center>
+
+    The SQL editor on the right can be used to run queries and inspect results. Use the `Run on presto-01` button to execute queries.
+
+    <center>
+      <img src="./images/wxd-explain.png" width="40%" height="40%"></img >
+    </center>
+
+   - Click on the `explain` button to visualize the plan for that query.
+
+   The **Query History** page provides a list of all the queries run so far. It includes the queries that the browser itself had initiated.
+
 
 - The Presto engine:
 
