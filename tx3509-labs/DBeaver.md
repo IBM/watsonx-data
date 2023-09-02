@@ -17,7 +17,7 @@ The Presto Server, exposed as `localhost:8443` in the wxd installation should al
 
 Here is an example of the Database Navigator view:
 
-<img src="./images/DBeaver_Navigator.png" width="50%" height="50%">
+<img src="./images/DBeaver_Navigator.png" >
 
 
 ### Working with a table
@@ -32,4 +32,4 @@ Use the following recording as a guide, but feel free to explore other tables in
 ---
 
 
-- once you are done with DBeaver, return back to the [Main lab](../README.md)
+- once you are done with DBeaver, return back to the [Main lab exercises](./README.md)
