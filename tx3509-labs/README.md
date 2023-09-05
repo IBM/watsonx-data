@@ -217,6 +217,7 @@ ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute "CREATE SCHEMA IF NOT
 
   You can also navigate the Catalogs and schema in your wxd lakehouse using DBeaver and run SQL queries.
 
+---
 
 ### Exercise 5: Create tables from csv files
 
@@ -235,14 +236,17 @@ We will be creating 5 tables in the `retail` schema each from its own .csv file.
 
 For this purpose, we will use the Data Manager capability in the wxd UI.
 
-Use the following recording as a guide 
+Use the following recording as a guide to load sample csv via the browser.
 
-[sample csv loads from the browser](./images/upload_csv.mp4)
-
+<BR>
+<IMG SRC="./images/upload_csv.gif">
+<BR>
 
 - create tables with the name shown above from the corresponding CSVs in the `./data` directory. 
 
 **Note**: later on in this lab, you will see how to ingest *large* data into the Lakehouse. The browser based mechanism shown above is only for tiny loads and primarily for demo purposes.
+
+---
 
 ### Exercise 6: View the physical data organization in the Object store bucket
 
