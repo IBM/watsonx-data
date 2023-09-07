@@ -14,21 +14,25 @@ TechXchange 2023 Hands on lab Session 3509:  https://reg.tools.ibm.com/flow/ibm/
   - [A Quick tour of the wxd user experience](#a-quick-tour-of-the-wxd-user-experience)
   - [Organizing data: Catalogs, Schemas and Tables](#organizing-data-catalogs-schemas-and-tables)
     - [Exercise 1: List catalogs and schema](#exercise-1-list-catalogs-and-schema)
-    - [Exercise 2: Select from a table](#exercise-2-select-from-a-table)
-    - [Exercise 3: Create schema in the iceberg\_data Catalog](#exercise-3-create-schema-in-the-iceberg_data-catalog)
-    - [Exercise 4: Explore with DBeaver](#exercise-4-explore-with-dbeaver)
+    - [Exercise 2: List tables and query](#exercise-2-list-tables-and-query)
+  - [Accessing your own files inside the utility containers](#accessing-your-own-files-inside-the-utility-containers)
+    - [Exercise 3: use presto-run to run a sql file](#exercise-3-use-presto-run-to-run-a-sql-file)
+    - [Exercise 4: Create schema in the iceberg\_data Catalog](#exercise-4-create-schema-in-the-iceberg_data-catalog)
     - [Exercise 5: Create tables from csv files](#exercise-5-create-tables-from-csv-files)
-    - [Exercise 6: View the physical data organization in the Object store bucket](#exercise-6-view-the-physical-data-organization-in-the-object-store-bucket)
-  - [Querying for data with Presto](#querying-for-data-with-presto)
-    - [Access Presto from Python](#access-presto-from-python)
-      - [Using python-run](#using-python-run)
-      - [Working with the developer sandbox container](#working-with-the-developer-sandbox-container)
+    - [Exercise 6.  Queries](#exercise-6--queries)
+    - [Exercise 7: Explore with DBeaver](#exercise-7-explore-with-dbeaver)
+  - [Accessing data with Python](#accessing-data-with-python)
+    - [Exercise 8: Working with the developer sandbox container](#exercise-8-working-with-the-developer-sandbox-container)
+    - [Exercise 9: Using the python-run utility](#exercise-9-using-the-python-run-utility)
   - [Federate external data](#federate-external-data)
     - [Setup PostgreSQL database](#setup-postgresql-database)
   - [Access Policies: Securing data](#access-policies-securing-data)
   - [Bringing data into your Lakehouse](#bringing-data-into-your-lakehouse)
   - [Analytics and ML with Spark](#analytics-and-ml-with-spark)
   - [Explore GraphQL for Data apps, powered by StepZen](#explore-graphql-for-data-apps-powered-by-stepzen)
+- [Appendix and extra exercises](#appendix-and-extra-exercises)
+  - [`ibm-lh-client` utilities](#ibm-lh-client-utilities)
+  - [Accessing the minio S3 buckets](#accessing-the-minio-s3-buckets)
 
 
 
@@ -41,15 +45,36 @@ The environment for the lab includes a slightly customized installation of the w
 
 The credentials for the installation will be shared during the event.
 
+In the Event Cloud lab environment VM - 
+
+``` 
+sudo bash 
+
+cd /root
+```
+
+You should see the Developer installation under `ibm-lh-dev/` and the Client installed under `ibm-lh-client/`
+
+The Developer installation stands up a set of containers that represent the individual microservices of watsonx.data. Both the client and developer installation also includes utilities under `bin/` that are useful to interact with the watsonx.data services, including the Presto engine. The client installation is typically used to connect to a remote watsonx.data instance.
+
+- If you intend to install them on your own machines, for installation documentation - see: [Installing the watsonx.data developer version](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=edition-installing-watsonxdata-developer-version) and  [Installing ibm-lh-client](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=package-installing-lh-client)
+
+
 ### Clone this git repository
+
 
 From `Applications -> Utilities` in your VM, Launch `Terminal`
 
-`git clone https://github.com/IBM/watsonx-data.git`
+```
+cd /home/watsonx
+
+git clone https://github.com/IBM/watsonx-data.git
+
+```
 
 From Applications -> Internet, open up Google Chrome.
 
-In the browser,  access `file:///home/watsonx/watsonx-data/tx3509-labs/README.MD`
+In the browser,  access `file:///home/watsonx/watsonx-data/tx3509-labs/README.MD` for the hands-on-lab content from the VM itself.
 
 ### Start all wxd containers
 
@@ -57,8 +82,9 @@ In the browser,  access `file:///home/watsonx/watsonx-data/tx3509-labs/README.MD
 
 ### Check the status of all the containers
 
+`ibm-lh-dev/bin/status --all`
+
 ```
-ibm-lh-dev/bin/status --all
 ibm-lh-hive-metastore                           running
 ibm-lh-minio                            running
 ibm-lh-postgres                         running                 5432/tcp
@@ -164,15 +190,30 @@ ibm-lh-dev/bin/presto-run --catalog tpcds --execute 'show schemas'
 
 ```
 
-### Exercise 2: Select from a table 
 
-- use the presto-run utility
+### Exercise 2: List tables and query
+
+
+- use presto CLI to browse schemas interactively
+
+`ibm-lh-dev/bin/presto-cli --catalog tpcds`
+
+```
+presto> use tiny;
+USE
+presto:tiny> show tables;
+:
+:
+
+```
+
+- query with the presto-run utility
 
 ```
   ibm-lh-dev/bin/presto-run --catalog tpcds --execute 'select * from "tpcds"."sf1"."catalog_page" limit 10'
 ```
 
-- use presto CLI to run queries interactively
+- use presto CLI to try queries interactively
 
     `ibm-lh-dev/bin/presto-cli --catalog tpcds`
 
@@ -185,8 +226,51 @@ ibm-lh-dev/bin/presto-run --catalog tpcds --execute 'show schemas'
 
     ```
 
+**Note**: The presto-run utility supports input via pipes while `presto-cli` does not.
 
-### Exercise 3: Create schema in the iceberg_data Catalog
+for example:
+
+`bin/presto-run --catalog=tpch <<< "select * from tiny.customer limit 10;"`
+
+## Accessing your own files inside the utility containers
+
+In some cases, you may want to work with files, say scripts or configuration, inside these containers. To mount your own directory with such content,  set LH_SANDBOX_DIR environment variable before launching any of the utilities.
+
+```
+mkdir -p /tmp/sbox
+export LH_SANDBOX_DIR=/tmp/sbox
+```
+
+**Note**: it is highly recommend that you pick a directory solely meant for sharing files inside these containers and not mount directories such as your HOME as, with some operating systems & container runtimes, there could be issues with file permissions.
+
+### Exercise 3: use presto-run to run a sql file
+
+create a sql file under the sandbox directory. 
+
+for example,
+
+```
+
+cat << EOF > $LH_SANDBOX_DIR/sample.sql
+select 
+*
+from
+tiny.catalog_page
+LIMIT 10
+;
+EOF 
+
+```
+
+and run it
+
+```
+ibm-lh-dev/bin/presto-run --catalog=tpcds -f $LH_SANDBOX_DIR/sample.sql
+```
+
+---
+
+### Exercise 4: Create schema in the iceberg_data Catalog
 
 Note that creating a schema requires a location parameter to identify which path in the bucket to use for storing data
 
@@ -208,15 +292,6 @@ You can also create a schema from the cmd line
 ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute "CREATE SCHEMA IF NOT EXISTS retain with (location='s3a://iceberg-bucket/retail/')"
 
 ```
-
-### Exercise 4: Explore with DBeaver
-
-- There is a convenient [DBeaver](https://dbeaver.io/) installation in the virtual machine.
-
-  Proceed to:  [Launching and using DBeaver with wxd](DBeaver.md)  
-
-  You can also navigate the Catalogs and schema in your wxd lakehouse using DBeaver and run SQL queries.
-
 ---
 
 ### Exercise 5: Create tables from csv files
@@ -248,56 +323,197 @@ Use the following recording as a guide to load sample csv via the browser.
 
 ---
 
-### Exercise 6: View the physical data organization in the Object store bucket
+### Exercise 6.  Queries
 
-Now that we have loaded some data into the `iceberg_data` catalog, we will look at how the data is physically stored in iceberg tables.
+**Exercise 6a) Use a Windowing function**
 
-We will look at the buckets hosted by the Minio S3 server in this environment.  You will need to export the minio UI port and get the (generated credentials to use)
-
-- open up the minio port
+find the orders table's location and run query 
 
 ```
-ibm-lh-dev/bin/expose-minio
-``` 
+SELECT
+  orderkey,
+  orderstatus,
+  totalprice,
+  rank() OVER (
+    PARTITION BY orderstatus
+    ORDER BY
+      totalprice DESC
+  ) AS rnk
+FROM
+  <catalog>.<schema>.orders 
+ORDER BY
+  orderstatus,
+  rnk;
+```
 
-you will see an output such as this:
+**Exercise 6b) View Explain**
 
- ```
-FYI: LH_RUN_MODE is set to diag
-019b4a8bd1661e220221bd013e3f6abf5682145c3fd46266e5d41b8696f7f028
-Minio credentials:
-    username: e18a57a138df8f9c33d1645a
-    password: a9644d59a0b9fe6de72b5f3d
-Ports:
-    S3 endpoint port: 9000
-    Minio console port: 9001 
- ```
+Try "Explain" in the watsonx UI's SQL Editor after updating the location of these tables
 
-- access the minio console 
+```
+SELECT
+  name,
+  orderkey,
+  orderstatus,
+  totalprice,
+  rank() OVER (
+    PARTITION BY orderstatus
+    ORDER BY
+      totalprice DESC
+  ) AS rnk
+FROM
+  <catalog>.<schema>.orders t1,
+  <catalog>.<schema>.customer t2
+where
+  t1.custkey = t2.custkey
+ORDER BY
+  orderstatus,
+  rnk;
+```
 
-visit https://localhost:9001 from your browser
+**Exercise 6c) Understand Presto explain text output**
 
-Enter the credentials from the `expose-minio`` output
+- expain a simple table scan
 
-- Navigate to the retail path 
+```
+ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute 'explain select name, mktsegment from iceberg_data.retail.customer;'
+```
 
---insert-pic--
+- type io
+
+```
+ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute 'explain (type io) select name, mktsegment from iceberg_data.retail.customer;'
+```
+
+- type distributed
+
+```
+ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute 'explain (type distributed) select name, mktsegment from iceberg_data.retail.customer;'
+```
+
+
+**Exercise 6d)** : Try other options with the window functions including aggregate functions, previous record, next record and running totals.
+
+**Exercise 6e)** : Try to write a window function to show the custkey, orderdate, totalprice and priororder. The output should look like this.
+
+```
+custkey | orderdate  | totalprice | priororder 
+---------+------------+------------+------------
+       1 | 1993-06-05 |  152411.41 | NULL       
+       1 | 1993-08-13 |   83095.85 |  152411.41 
+       1 | 1994-05-08 |   51134.82 |   83095.85 
+       1 | 1995-10-29 |  165928.33 |   51134.82 
+       1 | 1997-01-29 |  231040.44 |  165928.33 
+       1 | 1997-03-04 |  270087.44 |  231040.44 
+       1 | 1997-06-23 |  357345.46 |  270087.44 
+       1 | 1997-11-18 |   28599.83 |  357345.46 
+       1 | 1998-03-29 |   89230.03 |   28599.83 
+       2 | 1993-02-19 |  170842.93 |   89230.03 
+       2 | 1993-05-03 |  154867.09 |  170842.93 
+       2 | 1993-09-30 |   143707.7 |  154867.09 
+       2 | 1994-08-15 |  116247.57 |   143707.7 
+       2 | 1994-12-29 |   45657.87 |  116247.57 
+       2 | 1996-03-04 |   181875.6 |   45657.87 
+
+```
+
+**Exercise 6f)  Using a prepared query**
+
+use the presto-cli utility 
+
+```
+prepare customer_by_segment from select * from customer where mktsegment=?;
+execute customer_by_segment using 'MACHINERY';
+```
 
 ---
 
+### Exercise 7: Explore with DBeaver
 
-## Querying for data with Presto
+- There is a convenient [DBeaver](https://dbeaver.io/) installation in the virtual machine.
 
-### Access Presto from Python 
+  Proceed to:  [Launching and using DBeaver with wxd](DBeaver.md)  
 
-#### Using python-run
+  You can also navigate the Catalogs and schema in your wxd lakehouse using DBeaver and run SQL queries.
 
-#### Working with the developer sandbox container
+---
 
-  The developer sandbox provides an environment with useful utilities and python modules to help explore the lakehouse
-  To launch the sandbox 
+## Accessing data with Python
 
-   `bin/dev-sandbox`
+
+Note: both the `ibm-lh-dev` and `ibm-lh-client` packages include python packages inside a container image to make it easier to try out python against watsonx.data. In this section, we will be use the utilities from `ibm-lh-dev`. See the appendix for information on the [`ibm-lh-client` utilities](#ibm-lh-client-utilities).
+
+### Exercise 8: Working with the developer sandbox container
+
+The developer sandbox provides an environment with useful utilities and packages to help explore the lakehouse
+
+a) To launch the sandbox:
+
+   `ibm-lh-dev/bin/dev-sandbox`
+
+to get bash prompt
+
+You will also find the  $LH_SANDBOX_DIR` mounted inside the container.
+
+`ls /tmp/sbox/` 
+
+You can use `vi` to author python or sql scripts. For example `vi /tmp/sbox/sample.sql` to alter the sql and rerun.
+
+b) create a file /tmp/sbox/sample.py with the following contents
+
+```
+import os
+import prestodb
+
+username=os.environ["LH_AUTH_USERNAME"]
+password=os.environ["LH_AUTH_PASSWORD"]
+hostname="ibm-lh-presto-svc"
+portnumber="8443"
+cert_location='/mnt/infra/tls/cert.crt'
+
+with prestodb.dbapi.connect(
+host=hostname,
+port=portnumber,
+user=username,
+catalog='tpch',
+schema='tiny',
+http_scheme='https',
+auth=prestodb.auth.BasicAuthentication(username,password)
+) as conn:
+  conn._http_session.verify = cert_location
+  cur = conn.cursor()
+  cur.execute('select * from tpch.tiny.customer limit 10')
+  rows = cur.fetchall()
+  print(rows)
+```
+
+and run it inside the sandbox container itself.
+
+`python3 /tmp/sbox/sample.py` 
+
+You will note that the sandbox container has your credentials injected into it.
+
+- exit from the sandbox container once you are done.
+
+c) Launch an interactive python interpreter session
+
+You can also use the same dev-sandbox container for launching python3 directly
+
+for example:
+
+`ibm-lh-dev/bin/dev-sandbox -c python3`
+
+### Exercise 9: Using the python-run utility
+
+The `python-run` utility is a wrapper that triggers the execution of a python script inside a containerized environment.
+
+For example,
+
+`ibm-lh-dev/bin/python-run /tmp/sbox/sample.py`
+
+**Exercise**:  write a python program that uses a windowing function similar to the one in - [Exercise 6a](#exercise-6--queries)
+
+---
 
 ## Federate external data
 
@@ -313,5 +529,14 @@ In this example, we will join data from a PostgreSQL database with iceberg table
 
 ## Explore GraphQL for Data apps, powered by StepZen
 
+---
 
+# Appendix and extra exercises
 
+##  `ibm-lh-client` utilities
+
+Take [a short tour of the `ibm-lh-client` utilities](./lh-client.md)
+
+##  Accessing the minio S3 buckets
+
+[View the bucket contents using the minio console](./inspect-bucket.md)
