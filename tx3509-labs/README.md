@@ -1,35 +1,44 @@
-# Dive into the watsonx.data Lakehouse with the Developer Edition
-
-
-TechXchange 2023 Hands on lab Session 3509:  https://reg.tools.ibm.com/flow/ibm/techxchange23/attendeeportal/page/sessioncatalog?search=3509
+<CENTER>
+<br>
+<span style="font-weight:700;font-size:20px">
+Dive into the watsonx.data Lakehouse with the Developer Edition
+</span>
+</CENTER>
+<br>
+<br>
+<a href="https://reg.tools.ibm.com/flow/ibm/techxchange23/attendeeportal/page/sessioncatalog?search=3509">TechXchange 2023 Hands on lab Session 3509</a>
+<br>
+<br>
 
 
 ---
 
-- [Dive into the watsonx.data Lakehouse with the Developer Edition](#dive-into-the-watsonxdata-lakehouse-with-the-developer-edition)
-  - [Lab Setup](#lab-setup)
-    - [Clone this git repository](#clone-this-git-repository)
-    - [Start all wxd containers](#start-all-wxd-containers)
+- [Lab Setup](#lab-setup)
+  - [Clone this git repository](#clone-this-git-repository)
+  - [Start all wxd containers](#start-all-wxd-containers)
     - [Check the status of all the containers](#check-the-status-of-all-the-containers)
-  - [A Quick tour of the wxd user experience](#a-quick-tour-of-the-wxd-user-experience)
-  - [Organizing data: Catalogs, Schemas and Tables](#organizing-data-catalogs-schemas-and-tables)
-    - [Exercise 1: List catalogs and schema](#exercise-1-list-catalogs-and-schema)
-    - [Exercise 2: List tables and query](#exercise-2-list-tables-and-query)
-  - [Accessing your own files inside the utility containers](#accessing-your-own-files-inside-the-utility-containers)
-    - [Exercise 3: use presto-run to run a sql file](#exercise-3-use-presto-run-to-run-a-sql-file)
-    - [Exercise 4: Create schema in the iceberg\_data Catalog](#exercise-4-create-schema-in-the-iceberg_data-catalog)
-    - [Exercise 5: Create tables from csv files](#exercise-5-create-tables-from-csv-files)
-    - [Exercise 6.  Queries](#exercise-6--queries)
-    - [Exercise 7: Explore with DBeaver](#exercise-7-explore-with-dbeaver)
-  - [Accessing data with Python](#accessing-data-with-python)
-    - [Exercise 8: Working with the developer sandbox container](#exercise-8-working-with-the-developer-sandbox-container)
-    - [Exercise 9: Using the python-run utility](#exercise-9-using-the-python-run-utility)
-  - [Federate external data](#federate-external-data)
-    - [Setup PostgreSQL database](#setup-postgresql-database)
-  - [Access Policies: Securing data](#access-policies-securing-data)
-  - [Bringing data into your Lakehouse](#bringing-data-into-your-lakehouse)
-  - [Analytics and ML with Spark](#analytics-and-ml-with-spark)
-  - [Explore GraphQL for Data apps, powered by StepZen](#explore-graphql-for-data-apps-powered-by-stepzen)
+- [A Quick tour of the wxd user experience](#a-quick-tour-of-the-wxd-user-experience)
+- [Organizing data: Catalogs, Schemas and Tables](#organizing-data-catalogs-schemas-and-tables)
+  - [Exercise 1: List catalogs and schema](#exercise-1-list-catalogs-and-schema)
+  - [Exercise 2: List tables and query](#exercise-2-list-tables-and-query)
+- [Accessing your own files inside the utility containers](#accessing-your-own-files-inside-the-utility-containers)
+  - [Exercise 3: use presto-run to run a sql file](#exercise-3-use-presto-run-to-run-a-sql-file)
+- [Creating schema and tables](#creating-schema-and-tables)
+  - [Exercise 4: Create schema in the iceberg\_data Catalog](#exercise-4-create-schema-in-the-iceberg_data-catalog)
+  - [Exercise 5: Create tables from csv files](#exercise-5-create-tables-from-csv-files)
+- [SQL and Explains](#sql-and-explains)
+  - [Exercise 6. Running queries](#exercise-6-running-queries)
+- [Using DBeaver](#using-dbeaver)
+  - [Exercise 7: Explore the watsonx.data lakehouse with DBeaver](#exercise-7-explore-the-watsonxdata-lakehouse-with-dbeaver)
+- [Accessing data with Python](#accessing-data-with-python)
+  - [Exercise 8: Working with the developer sandbox container](#exercise-8-working-with-the-developer-sandbox-container)
+  - [Exercise 9: Using the python-run utility](#exercise-9-using-the-python-run-utility)
+- [Federate external data](#federate-external-data)
+  - [Setup PostgreSQL database](#setup-postgresql-database)
+- [Access Policies: Securing data](#access-policies-securing-data)
+- [Bringing data into your Lakehouse](#bringing-data-into-your-lakehouse)
+- [Analytics and ML with Spark](#analytics-and-ml-with-spark)
+- [Explore GraphQL for Data apps, powered by StepZen](#explore-graphql-for-data-apps-powered-by-stepzen)
 - [Appendix and extra exercises](#appendix-and-extra-exercises)
   - [`ibm-lh-client` utilities](#ibm-lh-client-utilities)
   - [Accessing the minio S3 buckets](#accessing-the-minio-s3-buckets)
@@ -39,7 +48,7 @@ TechXchange 2023 Hands on lab Session 3509:  https://reg.tools.ibm.com/flow/ibm/
 ---
 
 
-## Lab Setup
+# Lab Setup
 
 The environment for the lab includes a slightly customized installation of the watsonx.data (wxd) Developer edition and a set of other utilities for you to explore and experiment with the Lakehouse.  This environment also includes minio based S3 buckets for storing data and a PostgreSQL instance that we will use as part of the federated querying exercise.
 
@@ -60,7 +69,7 @@ The Developer installation stands up a set of containers that represent the indi
 - If you intend to install them on your own machines, for installation documentation - see: [Installing the watsonx.data developer version](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=edition-installing-watsonxdata-developer-version) and  [Installing ibm-lh-client](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=package-installing-lh-client)
 
 
-### Clone this git repository
+## Clone this git repository
 
 
 From `Applications -> Utilities` in your VM, Launch `Terminal`
@@ -76,7 +85,7 @@ From Applications -> Internet, open up Google Chrome.
 
 In the browser,  access `file:///home/watsonx/watsonx-data/tx3509-labs/README.MD` for the hands-on-lab content from the VM itself.
 
-### Start all wxd containers
+## Start all wxd containers
 
 `ibm-lh-dev/bin/start`
 
@@ -96,7 +105,7 @@ lhconsole-ui                            running                 0.0.0.0:9443->84
 
 ```
 
-## A Quick tour of the wxd user experience
+# A Quick tour of the wxd user experience
 
 
 - To open the console UI, visit: https://localhost:9443 in the browser.  
@@ -150,11 +159,11 @@ lhconsole-ui                            running                 0.0.0.0:9443->84
 
 ---
 
-## Organizing data: Catalogs, Schemas and Tables 
+# Organizing data: Catalogs, Schemas and Tables 
 
 While you can use the wxd browser based user experience to explore Catalogs and Schemas, in this section, we will look at using the command line.
 
-### Exercise 1: List catalogs and schema
+## Exercise 1: List catalogs and schema
 
 Explore the Lakehouse, using the presto-run utility
 
@@ -191,7 +200,7 @@ ibm-lh-dev/bin/presto-run --catalog tpcds --execute 'show schemas'
 ```
 
 
-### Exercise 2: List tables and query
+## Exercise 2: List tables and query
 
 
 - use presto CLI to browse schemas interactively
@@ -232,7 +241,7 @@ for example:
 
 `bin/presto-run --catalog=tpch <<< "select * from tiny.customer limit 10;"`
 
-## Accessing your own files inside the utility containers
+# Accessing your own files inside the utility containers
 
 In some cases, you may want to work with files, say scripts or configuration, inside these containers. To mount your own directory with such content,  set LH_SANDBOX_DIR environment variable before launching any of the utilities.
 
@@ -243,7 +252,7 @@ export LH_SANDBOX_DIR=/tmp/sbox
 
 **Note**: it is highly recommend that you pick a directory solely meant for sharing files inside these containers and not mount directories such as your HOME as, with some operating systems & container runtimes, there could be issues with file permissions.
 
-### Exercise 3: use presto-run to run a sql file
+## Exercise 3: use presto-run to run a sql file
 
 create a sql file under the sandbox directory. 
 
@@ -270,11 +279,13 @@ ibm-lh-dev/bin/presto-run --catalog=tpcds -f $LH_SANDBOX_DIR/sample.sql
 
 ---
 
-### Exercise 4: Create schema in the iceberg_data Catalog
+# Creating schema and tables
+
+## Exercise 4: Create schema in the iceberg_data Catalog
 
 Note that creating a schema requires a location parameter to identify which path in the bucket to use for storing data
 
-From the Data Manager UI, create a schema called 'retail',
+**Exercise 4a)** From the Data Manager UI, create a schema called 'retail',
 
 <center>
   <IMG src="./images/create_schema.png" width="25%" height="25%"/>
@@ -292,9 +303,39 @@ You can also create a schema from the cmd line
 ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute "CREATE SCHEMA IF NOT EXISTS retain with (location='s3a://iceberg-bucket/retail/')"
 
 ```
+
+**Exercise 4b)** Creating tables
+
+for example:  
+
+```
+CREATE TABLE iceberg_data.retail.region (
+ "regionkey" bigint NOT NULL,
+   "name" varchar(25) NOT NULL,
+   "comment" varchar(152) NOT NULL
+)
+```
+
+
+**Exercise 4c)** Create table AS SQL
+
+This enables you to create a table and copy data from another existing table.
+
+for example:
+
+```
+ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute 'create table iceberg_data.retail.big_sup as select * from tpch.tiny.supplier where acctbal > 2300.00'
+```
+
+**Exercise 4d):** Create another schema and tables
+
+In the iceberg_data catalog, create another schema with a different subpath from the command line
+
+Copy another table from tpcds.tiny into the new schema.
+
 ---
 
-### Exercise 5: Create tables from csv files
+## Exercise 5: Create tables from csv files
 
 To set up the next few exercises we will create additional tables in the newly created `retail` schema and load them with sample data.
 
@@ -323,7 +364,9 @@ Use the following recording as a guide to load sample csv via the browser.
 
 ---
 
-### Exercise 6.  Queries
+# SQL and Explains
+
+## Exercise 6. Running queries
 
 **Exercise 6a) Use a Windowing function**
 
@@ -428,22 +471,25 @@ execute customer_by_segment using 'MACHINERY';
 
 ---
 
-### Exercise 7: Explore with DBeaver
+# Using DBeaver
 
-- There is a convenient [DBeaver](https://dbeaver.io/) installation in the virtual machine.
+## Exercise 7: Explore the watsonx.data lakehouse with DBeaver
 
-  Proceed to:  [Launching and using DBeaver with wxd](DBeaver.md)  
+- There is a convenient [DBeaver](https://dbeaver.io/) installation in the lab virtual machine.
 
-  You can also navigate the Catalogs and schema in your wxd lakehouse using DBeaver and run SQL queries.
+You can also navigate the Catalogs and schema in your wxd lakehouse using DBeaver and run SQL queries.
+
+For this exercise, proceed to:  [Launching and using DBeaver with wxd](DBeaver.md)  
+
 
 ---
 
-## Accessing data with Python
+# Accessing data with Python
 
 
 Note: both the `ibm-lh-dev` and `ibm-lh-client` packages include python packages inside a container image to make it easier to try out python against watsonx.data. In this section, we will be use the utilities from `ibm-lh-dev`. See the appendix for information on the [`ibm-lh-client` utilities](#ibm-lh-client-utilities).
 
-### Exercise 8: Working with the developer sandbox container
+## Exercise 8: Working with the developer sandbox container
 
 The developer sandbox provides an environment with useful utilities and packages to help explore the lakehouse
 
@@ -503,7 +549,7 @@ for example:
 
 `ibm-lh-dev/bin/dev-sandbox -c python3`
 
-### Exercise 9: Using the python-run utility
+## Exercise 9: Using the python-run utility
 
 The `python-run` utility is a wrapper that triggers the execution of a python script inside a containerized environment.
 
@@ -515,19 +561,19 @@ For example,
 
 ---
 
-## Federate external data
+# Federate external data
 
 In this example, we will join data from a PostgreSQL database with iceberg tables in the `retail` schema.
 
-### Setup PostgreSQL database
+## Setup PostgreSQL database
 
-## Access Policies: Securing data
+# Access Policies: Securing data
 
-## Bringing data into your Lakehouse
+# Bringing data into your Lakehouse
 
-## Analytics and ML with Spark
+# Analytics and ML with Spark
 
-## Explore GraphQL for Data apps, powered by StepZen
+# Explore GraphQL for Data apps, powered by StepZen
 
 ---
 
