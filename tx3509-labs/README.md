@@ -48,12 +48,10 @@ Dive into the watsonx.data Lakehouse with the Developer Edition
   - [Exercise 8: Working with the developer sandbox container](#exercise-8-working-with-the-developer-sandbox-container)
   - [Exercise 9: Using the python-run utility](#exercise-9-using-the-python-run-utility)
 - [Federate external data](#federate-external-data)
-  - [Setup PostgreSQL demo database](#setup-postgresql-demo-database)
-  - [Add the PostgreSQL database to wxd](#add-the-postgresql-database-to-wxd)
 - [Data Ingest, Analytics and ML with Spark](#data-ingest-analytics-and-ml-with-spark)
 - [Explore GraphQL for Data apps, powered by StepZen](#explore-graphql-for-data-apps-powered-by-stepzen)
 - [Appendix and extra exercises](#appendix-and-extra-exercises)
-  - [`ibm-lh-client` utilities](#ibm-lh-client-utilities)
+  - [Work with the  `ibm-lh-client` utilities](#work-with-the--ibm-lh-client-utilities)
   - [Accessing the minio S3 buckets](#accessing-the-minio-s3-buckets)
 
 
@@ -571,88 +569,34 @@ For example,
 
 `ibm-lh-dev/bin/python-run /tmp/sbox/sample.py`
 
-**Exercise**:  write a python program that uses a windowing function similar to the one in - [Exercise 6a](#exercise-6--queries)
+**Exercise 9a) **:  write a python program that uses a windowing function similar to the one in - [Exercise 6a](#exercise-6--queries)
 
 ---
 
 # Federate external data
 
-In this example, we will join data from a PostgreSQL database with iceberg tables in the `retail` schema. The Developer edition deploys an containerized version of PostgreSQL which we will reuse for this exercise.
-
-## Setup PostgreSQL demo database
-
-1) copy a sample csv to the sandbox directory.
-
-`cp data/CUSTOMER.csv  $LH_SANDBOX_DIR/.`
-
-
-2). We will create a sample table and load some data into this PostgreSQL database. You can use a convenient shell script inside the dev-sandbox.
-
-```
-bin/dev-sandbox /scripts/runsql.sh postgres
-```
-
-You will see an interactive `postgres=#` prompt.
-
-3) Create a schema & table
-
-```
-create schema IF NOT EXISTS mart;
-CREATE TABLE IF NOT EXISTS mart.customer (
-   "custkey" integer,
-   "name" varchar,
-   "address" varchar,
-   "nation" varchar,
-   "phone" varchar,
-   "acctbal" real,
-   "mktsegment" varchar,
-   "comment" varchar
-);
-
-```
-
-4) load table from the sandbox location
-
-```
-\copy mart.customer from /tmp/sbox/CUSTOMER.csv delimiter ',' csv header;
-```
-
-`COPY 1000` in the response will indicate that a 1000 rows were loaded.
-
-to confirm:
-
-`select * from mart.customer limit 10;`
-
-` \q`  to exit the PostgreSQL prompt
-
-6). In your lab environment's terminal, get the generated password for the postgreSQL instance.
-
-`docker exec -it ibm-lh-postgres env | grep POSTGRES_PASSWORD`
-
-## Add the PostgreSQL database to wxd
-
-validate:
-
-bin/presto-run --catalog=mart --execute='select * from mart.customer limit 10'
+**Exercise 10):** [visit](FederatedQuerying.md)
 
 ---
 
 # Data Ingest, Analytics and ML with Spark
 
-[visit](Spark.md)
+**Exercise 11):** [visit](Spark.md)
 
 # Explore GraphQL for Data apps, powered by StepZen
 
-[visit](GraphQL)
+**Exercise 12):** [visit](GraphQL)
 
 ---
 
 # Appendix and extra exercises
 
-##  `ibm-lh-client` utilities
+## Work with the  `ibm-lh-client` utilities
+
+**Exercise 13):** Use the CLIs from the client package to connect to a remote watsonx.data Service.
 
 Take [a short tour of the `ibm-lh-client` utilities](./lh-client.md)
 
 ##  Accessing the minio S3 buckets
 
-[View the bucket contents using the minio console](./inspect-bucket.md)
+**Exercise 14):**  To understand the physical organization of the iceberg data/metadata, [View the bucket contents using the minio console](./inspect-bucket.md)

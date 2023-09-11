@@ -4,7 +4,7 @@ The `ibm-lh-client` package provides a set of utilities that will help you conne
 
 In this section, we will take a quick look at some of the utilities in the client package and connect to the "local" watsonx.data Developer installation.
 
-## Exercise 1.  Add connection information for a Presto engine 
+## Exercise 13-1.  Add connection information for a Presto engine 
 
 In this exercise, you will add the Presto engine installed and started from  `ibm-lh-dev` on the same VM.
 
@@ -57,7 +57,7 @@ d) Verify
 
 You can connect to multiple Presto servers in this fashion.  You will then refer to each by using the name with the `--engine=` argument. The addition of the engine included the credentials to be used, hence the utilities would not prompt you each time.
 
-## Exercise 2a.  Query with presto-run
+## Exercise 13-2a.  Query with presto-run
 
 for example:
 
@@ -67,7 +67,7 @@ ibm-lh-client/bin/presto-run --engine=wxd --catalog=tpch --execute 'select * fro
 
 For reference:  https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=client-running-sql-queries-by-using-lh
 
-## Exercise 2b. Start a presto-cli session
+## Exercise 13-2b. Start a presto-cli session
 
 for example:
 
@@ -79,7 +79,7 @@ presto> select * from tiny.customer limit 10;
 **Note** the `ibm-lh-dev` Developer edition installation includes a `presto-run` as well which behaves in an identical fashion. The key difference is that the `ibm-lh-dev` version automatically connects to its own Presto server (there is no `--engine=` argument), while `ibm-lh-client` is meant to work with many watsonx.data instances and multiple Presto servers.
 
 
-## Exercise 3. Using the ibm-lh utility
+## Exercise 13-3. Using the ibm-lh utility
 
 The ibm-lh utility invokes the watsonx.data REST API. In this exercise, you will try out some of these options.
 
