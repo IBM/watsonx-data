@@ -9,8 +9,7 @@ The watsonx.data client package includes convenient utilities and pre-packaged l
 To install watsonx.data client package, you will need the ibm-lh-client.tgz and the container images.
 
 ### Before you begin
-1. Review the license agreement (link to the license file in this repo), and ensure that you and your organization agree to the terms and conditions. 
-2. Setup a single-node virtual machine to install the package. The supported operating system environments are
+1. Setup a single-node virtual machine to install the package. The supported operating system environments are
 - Linux
 - Windows
 - Mac OS x86
@@ -22,21 +21,37 @@ To install watsonx.data client package, you will need the ibm-lh-client.tgz and 
 
 ### Procedure
 1. Set up the installation directory and environment variables
+
 a. Set up the work directory.
+   ```
    mkdir <install_directory>
    cd <install_directory>
-b. Set the environment variables
-   export LH_REGISTRY=icr.io/watsonx_data_dev_client_pkg
-2. Extract the client package
+   ```
+b. Extract the client package
+   ```
    tar -xvf /tmp/ibm-lh-client-*.tgz
+   ```
    This will create a directory by the name `ibm-lh-client`
+c. Review the license files located under `<install_directory>/ibm-lh-client`
+
+2. Set the environment variables
+   ```
+   export LH_REGISTRY=icr.io/watsonx_data_dev_client_pkg
+   ```
+
 3. Authenticate to the container registry
+   ```
    docker login $LH_REGISTRY -u iamapikey -p <read key procured from IBM>
+   ```
 4. Optional: You can customize your installation by editting the values in `ibm-lh-client/etc/launch_config.env`
 5. Run the setup script
+   ```
    ibm-lh-dev/bin/setup --license_acceptance=y --runtime=docker
+   ```
    or
+   ```
    ibm-lh-dev/bin/setup --license_acceptance=y --runtime=podman
+   ```
    This will pull the images from the container registry and start the container.
 
 ### Using the client package
