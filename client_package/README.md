@@ -5,7 +5,7 @@ IBM® watsonx.data is a new open architecture lakehouse that combines the elemen
 ## IBM watsonx.data client package
 The watsonx.data client package includes convenient utilities and pre-packaged libraries to access and develop applications that work with IBM watsonx.data.
 
-##Installing watsonx.data client package
+## Installing watsonx.data client package
 To install watsonx.data client package, you will need the ibm-lh-client.tgz and the container images.
 
 ### Before you begin
