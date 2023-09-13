@@ -26,7 +26,7 @@ yum install podman-plugins
 ### Procedure
 1. Set up the installation directory and environment variables
 
-a. Set up a work directory. For example
+a. Create a directory under which you wish to install watsonx.data developer package.
    ```
    export LH_ROOT_DIR=<install_directory>
    mkdir $LH_ROOT_DIR
