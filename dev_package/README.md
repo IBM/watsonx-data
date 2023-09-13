@@ -9,7 +9,7 @@ The watsonx.data developer package is an entry-level version of watsonx.data for
 To install watsonx.data developer package, you will need the ibm-lh-dev.tgz and the container images.
 
 ### Before you begin
-1. Procure the read key to access the container images which are hosted in a container registry within IBM. You can get the read key by signing up for the Academic Initiative (link to Academic Initiative portal), or the Partner program (link to Partner World portal)
+1. Procure the read key to access the container images which are hosted in a IBM container registry. You can get the read key by signing up for the Academic Initiative (link to Academic Initiative portal), or the Partner program (link to Partner World portal)
 2. Setup a single-node virtual machine to install the package. The supported operating system environments are
 - Linux
 - Windows
