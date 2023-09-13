@@ -1,5 +1,5 @@
 ## IBM watsonx.data
-IBM® watsonx.data is a new open architecture lakehouse that combines the elements of the data warehouse and data lakes. The best-in-class features and optimizations available on the watsonx.data make it an optimal choice for next generation data analytics and automation. It offers a single platform where you can attach data residing in object store and relational databases, synthesize the data through a SQL interface and make the data available for AI and BI applications.
+IBM® watsonx.data is a new open architecture lakehouse that combines the open, flexible, and low-cost storage of data lakes with the transactional qualities and performance of the data warehouse. The best-in-class features and optimizations available on the watsonx.data make it an optimal choice for next generation data analytics and automation. It offers a single platform where you can attach data residing in object store and relational databases, synthesize the data through a SQL interface and make the data available for AI and BI applications.
 
 
 ## IBM watsonx.data client package
