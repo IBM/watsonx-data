@@ -20,7 +20,7 @@ To install watsonx.data developer package, you will need the ibm-lh-dev.tgz and 
 ```
 yum install podman-plugins
 ```
-5. Determine the version of watsonx.data that you want to install, and transfer respective the ibm-lh-dev-<version>.tgz to the machine, say to `/tmp`
+5. Determine the version of watsonx.data that you want to install, and transfer respective the ibm-lh-dev-<version>.tgz from this github location to the machine, say to `/tmp`
 
 
 ### Procedure
