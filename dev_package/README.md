@@ -72,7 +72,7 @@ $LH_ROOT_DIR/ibm-lh-dev/bin/start
 ### View the status of watsonx.data
 To check the status of all the containers, run the following command
 ```
-$LH_ROOT_DIR/ibm-lh-dev/bin/status
+$LH_ROOT_DIR/ibm-lh-dev/bin/status --all
 ```
 
 ### Stop watsonx.data
