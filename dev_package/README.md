@@ -18,7 +18,7 @@ To install watsonx.data developer package, you will need the ibm-lh-dev.tgz and 
 3. Install `docker` or `podman` on the machine to run the container images.
 4. Install `podman-plugins`. It is important that you install `podman-plugins` before intalling watsonx.data.
 ```
-yum install -y podman-plugins
+yum install podman-plugins
 ```
 5. Determine the version of watsonx.data that you want to install, and transfer respective the ibm-lh-dev-<version>.tgz to the machine, say to `/tmp`
 
