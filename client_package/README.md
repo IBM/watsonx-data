@@ -9,7 +9,9 @@ The watsonx.data client package includes convenient utilities and pre-packaged l
 To install watsonx.data client package, you will need the ibm-lh-client.tgz and the container images.
 
 ### Before you begin
-1. Procure the read key to access the container images which are hosted in a container registry within IBM. You can get the read key by signing up for the Academic Initiative (link to Academic Initiative portal), or the Partner program (link to Partner World portal)
+1. You need to procure credentials to access the container images for the client package hosted in the IBM container registry. 
+    Students can get the read key by signing up for the Academic Initiative (link to Academic Initiative portal)
+    If you have purchased watsonx.data, you can use your entitlement key from [My IBM](https://myibm.ibm.com/products-services/containerlibrary?_gl=1%2a1o6moo1%2a_ga%2aMTgxNzQxMzQ4OS4xNjk0NTg0Nzky%2a_ga_FYECCCS21D%2aMTY5NDY1NzI0Ny43LjEuMTY5NDY1NzcxMC4wLjAuMA..)
 2. Setup a single-node virtual machine to install the package. The supported operating system environments are
 - Linux
 - Windows
@@ -40,13 +42,20 @@ b. Extract the client package
 c. Review the license files located under `~/ibm-watsonx-data/ibm-lh-client/licenses`
 
 2. Set the environment variables
+   Students who procured the readkey from the Academic Initiative, should pull the container images from `icr.io/watsonx_data_dev_client_pkg`
    ```
    export LH_REGISTRY=icr.io/watsonx_data_dev_client_pkg
    ```
-
+   If you have purchased watsonx.data, you should pull the container images from `cp.icr.io/cp/watsonx-data`
+   ```
+   export LH_REGISTRY=cp.icr.io/cp/watsonx-data
 3. Authenticate to the container registry
    ```
-   docker login $LH_REGISTRY -u iamapikey -p <read key procured from IBM>
+   docker login $LH_REGISTRY -u iamapikey -p <credentials>
+   ```
+   or
+   ```
+   podman login $LH_REGISTRY -u iamapikey -p <credentials>
    ```
 4. Optional: You can customize your installation by editting the values in `~/ibm-watsonx-data/ibm-lh-client/etc/launch_config.env`
 5. Run the setup script
