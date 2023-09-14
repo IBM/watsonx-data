@@ -1,9 +1,9 @@
 ## IBM watsonx.data
-IBM® watsonx.data is a new open architecture lakehouse that combines the open, flexible, and low-cost storage benefits of data lakes with the transactional qualities and performance of the data warehouse. The best-in-class features and optimizations available in watsonx.data make it an optimal choice for next generation data analytics and automation. It offers a single platform where you can attach data residing in object store and relational databases, synthesize the data through a SQL interface and make the data available for AI and BI applications.
+IBM® watsonx.data is a new open architecture lakehouse that combines the open, flexible, and low-cost storage benefits of data lakes with the transactional qualities and performance of the data warehouse. The best-in-class features and optimizations available in watsonx.data make it an optimal choice for next generation data analytics and automation. It offers a single platform where you can attach data residing in object store and relational databases, synthesize the data through a SQL interface and make the data available for AI and BI applications. To learn more, see [watsonx.data](https://www.ibm.com/products/watsonx-data)
 
 
 ## IBM watsonx.data developer package
-The watsonx.data developer package is an entry-level version of watsonx.data for the student, developer and partner community. The developer version offers a set of containers that can be installed on a suitable host machine at the same release level as the Enterprise version, with restricted features.
+The watsonx.data developer package is an entry-level version of watsonx.data for the student, developer and partner community. The developer version offers a set of containers that can be installed on a suitable host machine at the same release level as the Enterprise version, with restricted features. For more information see [watsonx.data developer version](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=edition-installing-watsonxdata-developer-version)
 
 ## Installing watsonx.data developer package
 To install watsonx.data developer package, you will need the ibm-lh-dev.tgz and the container images.
