@@ -578,7 +578,7 @@ For example,
 
 # Explore GraphQL for Data apps, powered by StepZen
 
-**Exercise 12):** [visit](GraphQL)
+**Exercise 12):** [visit](GraphQL.md)
 
 
 ---
