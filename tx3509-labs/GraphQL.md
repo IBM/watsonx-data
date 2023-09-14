@@ -46,7 +46,6 @@ stepzen import presto - introspect a Presto database and extend your GraphQL sch
 Creating a GraphQL schema... done
 Successfully imported presto data source into your GraphQL schema
 
-~/Development/stepzen took 10s 
 ```
 
 
