@@ -1,12 +1,4 @@
 
-<br>
-<br>
-For the latest: &nbsp;
-
-<CENTER>
- <H1>  <a href="https://github.com/IBM/watsonx-data/blob/main/tx3509-labs/README.MD"> https://github.com/IBM/watsonx-data/blob/main/tx3509-labs/README.MD </H1>
-
-</CENTER>
 
 <br>
 <br>
@@ -606,8 +598,6 @@ Take [a short tour of the `ibm-lh-client` utilities](./lh-client.md)
 ## Protect your data with RBAC and Access Policies 
 
 **Exercise 15):** In this section, you will look at mechanisms to control access to the watsonx.data infrastructure as well as to data. [Proceed to the Access management exercises](./AccessManagement.md)
-
----
 
 
 
