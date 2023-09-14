@@ -5,7 +5,15 @@
 
 
 ## Starting Stepzen
-IBM Stepzen is available as a managed service, however we are using a developer edition of the software for the purpose of this lab. The ./start_stepzen.sh will start two containers, one for the stepzen metadata which is stored in PostgreSQL
+IBM Stepzen is available as a managed service, however we are using a developer edition of the software for the purpose of this lab. 
+
+Run the 
+
+```
+/root/stepzen/start_stepzen.sh
+```
+
+script to start two containers, one for the stepzen metadata which is stored in PostgreSQL
 
 ```
 ❯ docker ps|grep step
