@@ -9,9 +9,9 @@ The watsonx.data developer version is an entry-level watsonx.data for the studen
 To install watsonx.data developer version, you will need the ibm-lh-dev.tgz and the container images.
 
 ### Before you begin
-1. You need to procure credentials to access the container images for the developer version hosted in the IBM container registry. 
-    Students can get the read key by signing up for the Academic Initiative (link to Academic Initiative portal)
-    If you have purchased watsonx.data, you can use your entitlement key from [My IBM](https://myibm.ibm.com/products-services/containerlibrary?_gl=1%2a1o6moo1%2a_ga%2aMTgxNzQxMzQ4OS4xNjk0NTg0Nzky%2a_ga_FYECCCS21D%2aMTY5NDY1NzI0Ny43LjEuMTY5NDY1NzcxMC4wLjAuMA..)
+1. You need to procure credentials to access the container images for the developer version hosted in the IBM container registry. <br>
+    Students can get the read key by signing up for the [Academic Initiative](https://www.ibm.com/academic/home) <br>
+    If you have purchased watsonx.data, you can use your entitlement key from [My IBM](https://myibm.ibm.com/products-services/containerlibrary?_gl=1%2a1o6moo1%2a_ga%2aMTgxNzQxMzQ4OS4xNjk0NTg0Nzky%2a_ga_FYECCCS21D%2aMTY5NDY1NzI0Ny43LjEuMTY5NDY1NzcxMC4wLjAuMA..). Depending on how the entitlement key was generated, you will need to specify the users as either `iamapikey` or `cp`.
 3. Setup a single-node virtual machine to install the package. The supported operating system environments are
 - Linux
 - Windows
@@ -47,7 +47,7 @@ c. Review the license files located under `$LH_ROOT_DIR/ibm-lh-dev/licenses`
    ```
    export LH_REGISTRY=icr.io/watsonx_data_dev_client_pkg
    ```
-   If you have purchased watsonx.data, you should pull the container images from `cp.icr.io/cp/watsonx-data`
+   If you have purchased watsonx.data, you should pull the container images from `cp.icr.io/cp/watsonx-data`. Depending on how the entitlement key was generated, you will need to specify the user as either `iamapikey` or `cp` in the login command in the next section.
    ```
    export LH_REGISTRY=cp.icr.io/cp/watsonx-data
    ```
