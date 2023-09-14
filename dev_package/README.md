@@ -9,14 +9,16 @@ The watsonx.data developer package is an entry-level version of watsonx.data for
 To install watsonx.data developer package, you will need the ibm-lh-dev.tgz and the container images.
 
 ### Before you begin
-1. Procure the read key to access the container images which are hosted in a IBM container registry. You can get the read key by signing up for the Academic Initiative (link to Academic Initiative portal), or the Partner program (link to Partner World portal)
-2. Setup a single-node virtual machine to install the package. The supported operating system environments are
+1. You need to procure credentials to access the container images for the developer version hosted in the IBM container registry. 
+    Students can get the read key by signing up for the Academic Initiative (link to Academic Initiative portal)
+    If you have purchased watsonx.data, you can use your entitlement key from [My IBM](https://myibm.ibm.com/products-services/containerlibrary?_gl=1%2a1o6moo1%2a_ga%2aMTgxNzQxMzQ4OS4xNjk0NTg0Nzky%2a_ga_FYECCCS21D%2aMTY5NDY1NzI0Ny43LjEuMTY5NDY1NzcxMC4wLjAuMA..)
+3. Setup a single-node virtual machine to install the package. The supported operating system environments are
 - Linux
 - Windows
 - Mac OS x86
 - Mac with Apple Silicon with Rosetta. For more information see [here](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=version-prerequisites-watsonxdata-installation-mac)
-3. Install `docker` or `podman` on the machine to run the container images.
-4. Install `podman-plugins`. It is important that you install `podman-plugins` before intalling watsonx.data.
+4. Install `docker` or `podman` on the machine to run the container images.
+5. Install `podman-plugins`. It is important that you install `podman-plugins` before intalling watsonx.data.
 ```
 yum install podman-plugins
 ```
@@ -41,13 +43,21 @@ b. Extract the developer package
 c. Review the license files located under `$LH_ROOT_DIR/ibm-lh-dev/licenses`
 
 2. Set the environment variables
+   Students who procured the readkey from the Academic Initiative, should pull the container images from `icr.io/watsonx_data_dev_client_pkg`
    ```
    export LH_REGISTRY=icr.io/watsonx_data_dev_client_pkg
    ```
-
+   If you have purchased watsonx.data, you should pull the container images from `cp.icr.io/cp/watsonx-data`
+   ```
+   export LH_REGISTRY=cp.icr.io/cp/watsonx-data
+   ```
 3. Authenticate to the container registry
    ```
-   docker login $LH_REGISTRY -u iamapikey -p <read key procured from IBM>
+   docker login $LH_REGISTRY -u iamapikey -p <credentials>
+   ```
+   or
+   ```
+   podman login $LH_REGISTRY -u iamapikey -p <credentials>
    ```
 4. Optional: You can customize your installation by editting the values in `$LH_ROOT_DIR/ibm-lh-dev/etc/launch_config.env`
 5. Run the setup script
@@ -103,7 +113,7 @@ These are the default values. If you have cutomized the install, you will need t
 You can interact with watsonx.data through the API interface. For more details, see https://cloud.ibm.com/apidocs/watsonxdata-software
 
 ### presto-cli interface
-The developer package includes `presto-cli` to allow you to directly interact with presto. You can run `presto-cli` if you want to access presto in an interactive moe, and run `presto-run` to access in non-interactive mode.
+The developer package includes `presto-cli` to allow you to directly interact with presto. You can run `presto-cli` if you want to access presto in an interactive mode, and run `presto-run` to access in non-interactive mode.
 You will be accessing presto as user `ibmlhadmin`. If you want to interact as any other user added to the installation, use the client package.
 
 
