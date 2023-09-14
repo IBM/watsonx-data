@@ -53,6 +53,7 @@ Dive into the watsonx.data Lakehouse with the Developer Edition
 - [Appendix and extra exercises](#appendix-and-extra-exercises)
   - [Work with the  `ibm-lh-client` utilities](#work-with-the--ibm-lh-client-utilities)
   - [Accessing the minio S3 buckets](#accessing-the-minio-s3-buckets)
+  - [Protect your data with RBAC and Access Policies](#protect-your-data-with-rbac-and-access-policies)
 
 
 
@@ -587,6 +588,7 @@ For example,
 
 **Exercise 12):** [visit](GraphQL)
 
+
 ---
 
 # Appendix and extra exercises
@@ -600,3 +602,12 @@ Take [a short tour of the `ibm-lh-client` utilities](./lh-client.md)
 ##  Accessing the minio S3 buckets
 
 **Exercise 14):**  To understand the physical organization of the iceberg data/metadata, [View the bucket contents using the minio console](./inspect-bucket.md)
+
+## Protect your data with RBAC and Access Policies 
+
+**Exercise 15):** In this section, you will look at mechanisms to control access to the watsonx.data infrastructure as well as to data. [Proceed to the Access management exercises](./AccessManagement.md)
+
+---
+
+
+
