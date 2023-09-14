@@ -68,5 +68,9 @@ c. Review the license files located under `~/ibm-watsonx-data/ibm-lh-client/lice
    ```
    This will pull the images from the container registry and start the container.
 
-### Using the client package
+### Useful links
+    Refer to the following links
+    [Commands and usage](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=client-lh-commands-usage)
+    [Running SQL queries by using ibm-lh-client](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=client-running-sql-queries-by-using-lh)
+    
 
