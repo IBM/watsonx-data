@@ -440,9 +440,9 @@ ibm-lh-dev/bin/presto-run --catalog iceberg_data --execute 'explain (type distri
 ```
 
 
-**Exercise 6d)** : Try other options with the window functions including aggregate functions, previous record, next record and running totals.
+**Exercise 6d)** : (optional) Try other options with the window functions including aggregate functions, previous record, next record and running totals.
 
-**Exercise 6e)** : Try to write a window function to show the custkey, orderdate, totalprice and priororder. The output should look like this.
+**Exercise 6e)** : (optional) Try to write a window function to show the custkey, orderdate, totalprice and priororder. The output should look like this.
 
 ```
 custkey | orderdate  | totalprice | priororder 
@@ -562,7 +562,7 @@ For example,
 
 `ibm-lh-dev/bin/python-run /tmp/sbox/sample.py`
 
-**Exercise 9a) **:  write a python program that uses a windowing function similar to the one in - [Exercise 6a](#exercise-6--queries)
+**Exercise 9a)**: (optional)  write a python program that uses a windowing function similar to the one in - [Exercise 6a](#exercise-6--queries)
 
 ---
 
