@@ -34,10 +34,8 @@ a. Set up a work directory. For example
    cd  ~/ibm-watsonx-data
    ```
 b. Download and extract the client package<br>
-   Run the following command to download the installer. <br>
    ```
    wget https://raw.githubusercontent.com/IBM/watsonx-data/main/client_package/ibm-lh-client-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
-
    ``` 
    ```
    tar -xvf ibm-lh-client-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
