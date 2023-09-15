@@ -106,8 +106,8 @@ You can delete a user by running ths following command
 ## Working with watsonx.data
 
 ### UI Interface
-You can access the UI interface by visitng https:/<machine_name>:9443 as user `ibmlhadmin` with password `password`.
-These are the default values. If you have cutomized the install, you will need to adjust them to match your customization.
+You can access the UI interface by visitng https://localhost:9443, or https:/<machine_name>:9443 if you have installed on a remote machine.
+To login, specify `ibmlhadmin` for the Username field and `password` for the Password field. These are the default values. If you have customized the install, you will need to specify the values accordingly.
 
 ### API interface
 You can interact with watsonx.data through the API interface. For more details, see https://cloud.ibm.com/apidocs/watsonxdata-software
