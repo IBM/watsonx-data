@@ -22,7 +22,6 @@ To install watsonx.data developer version, you will need the ibm-lh-dev.tgz and 
 ```
 yum install podman-plugins
 ```
-5. Determine the version of watsonx.data that you want to install, and transfer respective the ibm-lh-dev-<version>.tgz from this github location to the machine, say to `/tmp`
 
 
 ### Procedure
@@ -34,9 +33,13 @@ a. Create a directory under which you wish to install watsonx.data developer ver
    mkdir $LH_ROOT_DIR
    cd $LH_ROOT_DIR
    ```
-b. Extract the developer package
+b. EDownload and extract the developer package
+   Run the following command to download the installer
    ```
-   tar -xvf /tmp/ibm-lh-dev-<version>.tgz
+   wget https://github.com/IBM/watsonx-data/blob/main/developer_package/ibm-lh-dev-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
+   ```  
+   ```
+   tar -xvf ibm-lh-dev-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
    ```
    This will create a directory by the name `ibm-lh-dev`
 
