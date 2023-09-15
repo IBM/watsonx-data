@@ -33,8 +33,9 @@ a. Create a directory under which you wish to install watsonx.data developer ver
    mkdir $LH_ROOT_DIR
    cd $LH_ROOT_DIR
    ```
-b. EDownload and extract the developer package
-   Run the following command to download the installer. THE wget COMMAND NEEDS TO BE CHANGED BEFORE PUSHING TO PUBLIC GIT.
+b. Download and extract the developer package<br>
+   Run the following command to download the installer. <br>
+   **THE wget COMMAND NEEDS TO BE CHANGED BEFORE PUSHING TO PUBLIC GIT.**
    ```
    wget https://github.ibm.com/PrivateCloud/watsonx-data-public/blob/TEMP.kanch-dev_client_free_access/developer_package/ibm-lh-dev-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
    ```  
