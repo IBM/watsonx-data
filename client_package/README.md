@@ -35,9 +35,9 @@ a. Set up a work directory. For example
    ```
 b. Download and extract the client package<br>
    Run the following command to download the installer. <br>
-   **THE wget COMMAND NEEDS TO BE CHANGED BEFORE PUSHING TO PUBLIC GIT.**
    ```
-   wget https://github.ibm.com/PrivateCloud/watsonx-data-public/blob/TEMP.kanch-dev_client_free_access/client_package/ibm-lh-client-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
+   wget https://raw.githubusercontent.com/IBM/watsonx-data/main/client_package/ibm-lh-client-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
+
    ``` 
    ```
    tar -xvf ibm-lh-client-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
