@@ -30,7 +30,7 @@ yum install podman-plugins
 
 a. Create a directory under which you wish to install watsonx.data developer version.
    ```
-   export LH_ROOT_DIR=<install_directory>
+   export LH_ROOT_DIR=~/watsonx-data
    mkdir $LH_ROOT_DIR
    cd $LH_ROOT_DIR
    ```
