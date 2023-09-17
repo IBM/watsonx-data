@@ -18,8 +18,17 @@ IBM® watsonx.data is a modern data store based on an open Lakehouse architectur
 
 ---
 
-- watsonx.data ("wxd") is available as a Managed Service on IBM and AWS clouds as well as Software on Red Hat OpenShift Kubernetes.  There is also a small footprint Developer edition that can be run on a single VM or a laptop.
+- watsonx.data ("wxd") is available as a Managed Service on IBM and AWS clouds as well as Software on Red Hat OpenShift Kubernetes.  There is also a small footprint Developer version that can be run on a single VM or a laptop. The client package provides utilities to connect to watsonx.data services.
 
+## Get started
+
+- [download the Developer package](developer_package/)
+
+- [download the Client package](client_package/)
+
+- [provision a managed service instance](https://cloud.ibm.com/docs/watsonxdata?topic=watsonxdata-getting-started)
+
+- [deploy on Red Hat OpenShift Kubernetes](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.7.x?topic=services-watsonxdata)
 
 > In this repository, you will see more details on how watsonx.data works as well as tutorials and study materials used in hands-on labs & workshops. These will provide illustrative examples of using specific features & use cases and generally on how best to use watsonx.data for your AI and BI needs.  You will also see examples of integrations with other products and services to introduce how you can expand watsonx.data to broader solutions.
 
