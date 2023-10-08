@@ -90,8 +90,6 @@ c. Review the license files located under `~/ibm-watsonx-data/ibm-lh-client/lice
 
 ## Useful links
 Refer to the following links for more information on using the client package<br>
-
 [Commands and usage](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=utilities-lh-client-commands-usage) <br>
 [Running SQL queries](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=utilities-running-sql-queries-by-using-lh-client) <br>
 [Running Python scripts](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=utilities-running-python-scripts-by-using-lh-client)
-
