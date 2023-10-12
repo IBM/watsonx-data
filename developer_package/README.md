@@ -96,11 +96,11 @@ $LH_ROOT_DIR/ibm-lh-dev/bin/stop
 When you run the `setup` command to install the developer version, it will create a default user `ibmlhadmin` with password `password`. This user has admin privileges on teh installation.
 You can a users by running the following command
 ```
-./ibm-lh-dev/bin/usermgmt add-user <user-name> Admin|User <user-password>
+./ibm-lh-dev/bin/user-mgmt add-user <user-name> Admin|User <user-password>
 ```
 You can delete a user by running ths following command
 ```
-./ibm-lh-dev/bin/usermgmt delete-user <user-name>
+./ibm-lh-dev/bin/user-mgmt delete-user <user-name>
 ```
 
 
