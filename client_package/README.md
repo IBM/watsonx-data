@@ -44,11 +44,12 @@ b. Download and extract the client package<br>
 c. Review the license files located under `~/ibm-watsonx-data/ibm-lh-client/licenses`
 
 2. Set the environment variables
-   If you have purchased watsonx.data, you should pull the container images from `cp.icr.io/cp/watsonx-data`
+   <br>If you have purchased watsonx.data, you should pull the container images from `cp.icr.io/cp/watsonx-data`
    ```
    export LH_REGISTRY=cp.icr.io/cp/watsonx-data
    ```
    If you have not purchased watsonx.data and have a readkey from IBM, you should pull the container images from `icr.io/watsonx_data_dev_client_pkg`
+   ```
    export LH_REGISTRY=icr.io/watsonx_data_dev_client_pkg
    ```
 3. Authenticate to the container registry
