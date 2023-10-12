@@ -34,10 +34,10 @@ a. Set up a work directory. For example
    ```
 b. Download and extract the client package<br>
    ```
-   wget https://github.com/IBM/watsonx-data/releases/download/v1.0.2/ibm-lh-client-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
+   wget https://github.com/IBM/watsonx-data/releases/download/v1.0.3/ibm-lh-client-1.0.3-255-20230912-165706-onprem-v1.0.3.tgz
    ``` 
    ```
-   tar -xvf ibm-lh-client-1.0.2-1192-20230816-142123-onprem-v1.0.2.tgz
+   tar -xvf ibm-lh-client-1.0.3-255-20230912-165706-onprem-v1.0.3.tgz
    ```
    This will create a directory by the name `ibm-lh-client`
    
