@@ -10,8 +10,7 @@ To install watsonx.data client package, you will need the ibm-lh-client.tgz and 
 
 ### Before you begin
 1. You need to procure credentials to access the container images for the client package hosted in the IBM container registry. 
-    If you have purchased watsonx.data, you can use your entitlement key from [My IBM](https://myibm.ibm.com/products-services/containerlibrary?_gl=1%2a1o6moo1%2a_ga%2aMTgxNzQxMzQ4OS4xNjk0NTg0Nzky%2a_ga_FYECCCS21D%2aMTY5NDY1NzI0Ny43LjEuMTY5NDY1NzcxMC4wLjAuMA..)
-    If you have not purchased watsonx.data, reach out to your IBM contact to get the read key to access the watsonx.data images.
+    If you have purchased watsonx.data, you can use your entitlement key from [My IBM](https://myibm.ibm.com/products-services/containerlibrary?_gl=1%2a1o6moo1%2a_ga%2aMTgxNzQxMzQ4OS4xNjk0NTg0Nzky%2a_ga_FYECCCS21D%2aMTY5NDY1NzI0Ny43LjEuMTY5NDY1NzcxMC4wLjAuMA..). If you have not purchased watsonx.data, reach out to your IBM contact to get the read key to access the watsonx.data images.
 2. Setup a single-node virtual machine to install the package. The supported operating system environments are
 - Linux
 - Windows
@@ -48,8 +47,8 @@ c. Review the license files located under `~/ibm-watsonx-data/ibm-lh-client/lice
    If you have purchased watsonx.data, you should pull the container images from `cp.icr.io/cp/watsonx-data`
    ```
    export LH_REGISTRY=cp.icr.io/cp/watsonx-data
-   If you have not purchased watsonx.data and have a readkey from IBM, you should pull the container images from `icr.io/watsonx_data_dev_client_pkg`
    ```
+   If you have not purchased watsonx.data and have a readkey from IBM, you should pull the container images from `icr.io/watsonx_data_dev_client_pkg`
    export LH_REGISTRY=icr.io/watsonx_data_dev_client_pkg
    ```
 3. Authenticate to the container registry
