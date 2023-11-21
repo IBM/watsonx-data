@@ -17,11 +17,22 @@ To install watsonx.data developer version, you will need the ibm-lh-dev.tgz and 
 - Mac OS x86
 - Mac with Apple Silicon with Rosetta. For more information see [here](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=version-prerequisites-watsonxdata-installation-mac)
 4. Install `docker` or `podman` on the machine to run the container images.
-5. Install `podman-plugins`. It is important that you install `podman-plugins` before intalling watsonx.data.
+<br>If you are using SUSE Linux, `podman` is only availaible for version SLES 15.4. Also, make sure to upgrade the system first (`zypper dist-upgrade`) before installing the dependencies that are not provided but are needed for the installation of `docker` or `podman`. 
+
+For Docker:
+- `sysuser-shadow` in SLES 12.5
+- `catatonit` in SLES 15.5
+
+For Podman:
+- `fuse-overlayfs` in SLES 15.4
+
+Packages can be downloaded from the [official site](https://software.opensuse.org/package/).
+
+6. Install `podman-plugins`. It is important that you install `podman-plugins` before intalling watsonx.data.
 ```
 yum install podman-plugins
 ```
-
+For SUSE, install [cni-plugin-dnsname](https://build.opensuse.org/package/show/home:ojkastl_buildservice:docker_compose_etc/cni-plugin-dnsname) instead.
 
 ### Procedure
 1. Set up the installation directory and environment variables
