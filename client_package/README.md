@@ -17,6 +17,7 @@ To install watsonx.data client package, you will need the ibm-lh-client.tgz and 
 - Mac OS x86
 - Mac with Apple Silicon with Rosetta. For more information see [here](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=version-prerequisites-watsonxdata-installation-mac)
 3. Install `docker` or `podman` on the machine to run the container images. 
+
 <br>If you are using SUSE Linux, `podman` is only availaible for version SLES 15.4. Also, make sure to upgrade the system first (`zypper dist-upgrade`) before installing the dependencies that are not provided but are needed for the installation of `docker` or `podman`. 
 
 For Docker:
@@ -29,11 +30,12 @@ For Podman:
 Packages can be downloaded from the [official site](https://software.opensuse.org/package/).
 
 
-5. Install `podman-plugins`. It is important that you install `podman-plugins` before intalling watsonx.data.
+4. Install `podman-plugins`. It is important that you install `podman-plugins` before intalling watsonx.data.
 ```
 yum install -y podman-plugins
 ```
 For SUSE, install [cni-plugin-dnsname](https://build.opensuse.org/package/show/home:ojkastl_buildservice:docker_compose_etc/cni-plugin-dnsname) instead.
+
 
 5. Determine the version of watsonx.data that you want to install, and transfer respective the ibm-lh-client-<version>.tgz to the machine, say to `/tmp`
 
@@ -88,6 +90,8 @@ c. Review the license files located under `~/ibm-watsonx-data/ibm-lh-client/lice
 
 ## Useful links
 Refer to the following links for more information on using the client package<br>
+
 [Commands and usage](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=utilities-lh-client-commands-usage) <br>
 [Running SQL queries](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=utilities-running-sql-queries-by-using-lh-client) <br>
 [Running Python scripts](https://www.ibm.com/docs/en/watsonxdata/1.0.x?topic=utilities-running-python-scripts-by-using-lh-client)
+
