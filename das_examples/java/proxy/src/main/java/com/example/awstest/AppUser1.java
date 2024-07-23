@@ -22,7 +22,7 @@ public class AppUser1 {
         String bucketName = "lhbucket";
         String keyName = "proxytest/c1.txt";
 
-        String endpoint = "<cas end point>/cas/v1/proxy";
+        String endpoint = "<DAS endpoint>/cas/v1/proxy";
       
         String secretKey = "any string";
 
