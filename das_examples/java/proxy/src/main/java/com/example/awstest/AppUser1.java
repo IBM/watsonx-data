@@ -40,7 +40,7 @@ public class AppUser1 {
        ListObjects.listObjectsTest(s3Client, bucketName);
        String dir=System.getProperty("user.dir");
        //Change to your local file name
-       String fileName=dir+"/cas_cpg_proxy/upload/post_test.txt";
+       String fileName=dir+"/java/proxy/upload/post_test.txt";
        System.out.println("Upload file :"+fileName);
 
         try {
@@ -48,7 +48,7 @@ public class AppUser1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String downloadFile=dir+"/cas_cpg_proxy/download/c1.txt";
+        String downloadFile=dir+"/java/proxy/download/c1.txt";
         GetObject.GetObjectTest(s3Client, bucketName, keyName,downloadFile);
 
         DeleteObject.deleteObjectTest(s3Client, bucketName, keyName);
