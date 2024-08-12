@@ -13,3 +13,13 @@ The package package will be used for integration with other services and applica
 8. "utils.py" includes the session token that is generated dynamically to access the service details and the instance.
 
 Note: We could leverage the RAG based similarity search code in place of the sample code once the design looks good. 
+
+# How to setup the environment
+1. Setup a python venv "python -m venv /path/to/new/virtual/environment"
+2. Install pip in the python venv
+3. Install poetry using "pipx install poetry"
+4. Install the library requirements using "poetry install"
+
+# How to generate the package in .whl or .tar format
+1. Generate the package using "poetry build"
+2. A new version of the build gets generated in the format of .whl and .tar in the /dist folder. 
