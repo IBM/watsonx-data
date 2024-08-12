@@ -1,5 +1,6 @@
 from pymilvus import MilvusClient as connection
-import configparser, requests, pkg_resources
+import configparser, pkg_resources
+import warnings
 from urllib.parse import urlparse
 # Authentication enabled with the root user
 client = MilvusClient(
@@ -33,7 +34,7 @@ def setup_milvus_connection():
         
     elif platform == "cpd":
 
-        connections.connect(
+        connection.connect(
             secure=True,
             server_pem_path=config.get('CPD', 'cpd_cert_path'),
             server_name=config.get('MILVUS', 'milvus_grpc_url'),

@@ -41,7 +41,6 @@ def getEngineDetails(file_path):
         grpcHost = json_data["milvus_services"][0]["grpc_host"]
         serviceId = json_data["milvus_services"][0]["service_id"]
 
-        # config.add_section("MILVUS")
         config.set("MILVUS", "milvus_grpc_url", grpcHost)
         config.set("MILVUS", "milvus_rest_url", httpsHost)
         config.set("MILVUS", "service_id", serviceId)

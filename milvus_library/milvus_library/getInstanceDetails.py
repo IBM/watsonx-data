@@ -17,8 +17,6 @@ def get_instance_id(token):
     }
     response = requests.get(f"{cpd_url}/zen-data/v3/service_instances?add_on_type=watsonx-data", headers=headers, verify=False)
 
-    # print(response.text)
-
     json_data = response.json()
 
     instanceId = json_data["service_instances"][0]["id"]

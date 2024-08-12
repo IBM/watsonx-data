@@ -14,8 +14,7 @@ def setup_milvus_connection():
     platform = config.get('GENERAL','platform')
     url= config.get('MILVUS', 'milvus_grpc_url')
     parsed_url = urlparse(url)
-    # print(fmt.format("Estabilishing the Milvus connection"))
-    print("Establishing the connection")
+    print(fmt.format("Estabilishing the Milvus connection"))
     if platform == "saas":
         connections.connect(
 
@@ -41,7 +40,6 @@ def setup_milvus_connection():
             password=config.get('CPD', 'password'),
             db_name=config.get('GENERAL', 'database')
         )
-    # print(fmt.format("Milvus Connection Established"))
-    print("Milvus connection established")
+    print(fmt.format("Milvus Connection Established"))
     warnings.filterwarnings("ignore")
 setup_milvus_connection()
