@@ -22,4 +22,4 @@ Note: We could leverage the RAG based similarity search code in place of the sam
 
 # How to generate the package in .whl or .tar format
 1. Generate the package using "poetry build"
-2. A new version of the build gets generated in the format of .whl and .tar in the /dist folder. 
+2. A new version of the build gets generated in the format of .whl and .tar in the /dist folder.
