@@ -1,40 +1,74 @@
-from pymilvus import MilvusClient as connection
-import configparser, pkg_resources
-import warnings
+import warnings,configparser
 from urllib.parse import urlparse
+from pymilvus import MilvusClient, connections
+import pkg_resources
+
 # Authentication enabled with the root user
-client = MilvusClient(
-    uri="http://localhost:19530",
-    token="root:Milvus",
-    db_name="default"
-)
-fmt = "\n=== {:30} ===\n"
-file_path = pkg_resources.resource_filename("milvus_library", "config.properties")
 
-def setup_milvus_connection():
+FMT = "\n=== {:30} ===\n"
+FILE_PATH = pkg_resources.resource_filename("milvus_library", "config.properties")
 
-    config=configparser.ConfigParser()
-    config.read(file_path)
-    platform = config.get('GENERAL','platform')
-    url= config.get('MILVUS', 'milvus_grpc_url')
+
+def setup_milvus_client_connection():
+    config = configparser.ConfigParser()
+    config.read(FILE_PATH)
+    platform = config.get('GENERAL', 'platform')
+    url = config.get('MILVUS', 'milvus_grpc_url')
     parsed_url = urlparse(url)
-    print(fmt.format("Estabilishing the Milvus connection"))
-    if platform == "saas":
-        connection.connect(
+    host = parsed_url.hostname
+    port = parsed_url.port
+    db_name = config.get('GENERAL', 'database')
+    
 
+    print(FMT.format("Establishing the Milvus connection via Milvus Client"))
+
+    if platform == "saas":
+        saas_user = config.get('SAAS', 'saas_username')
+        saas_pwd = config.get('SAAS', 'password')
+
+        client = MilvusClient(
+            uri=f"https://{saas_user}:{saas_pwd}@{host}:{port}",
+            db_name=db_name
+        )
+
+    elif platform == "cpd":
+        cpd_user = config.get('CPD', 'cpd_username')
+        cpd_pwd = config.get('CPD', 'password')
+        cert_file = config.get('CPD', 'cpd_cert_path')
+
+        client = MilvusClient(
+            uri=f"https://{cpd_user}:{cpd_pwd}@{host}:{port}",
+            server_pem_path=cert_file,
+            db_name=db_name
+        )
+    
+    print(FMT.format("Milvus Connection Established via MilvusClient"))
+    return client
+
+setup_milvus_client_connection()
+
+def setup_milvus_orm_connection():
+    config = configparser.ConfigParser()
+    config.read(FILE_PATH)
+    platform = config.get('GENERAL', 'platform')
+    url = config.get('MILVUS', 'milvus_grpc_url')
+    parsed_url = urlparse(url)
+
+    print(FMT.format("Establishing the Milvus connection via ORM"))
+
+    if platform == "saas":
+        connections.connect(
             secure=True,
-            host = parsed_url.hostname,
-            port = parsed_url.port,
-            server_name = parsed_url.hostname,
-            user=config.get('SAAS', 'saas_username'), 
+            host=parsed_url.hostname,
+            port=parsed_url.port,
+            server_name=parsed_url.hostname,
+            user=config.get('SAAS', 'saas_username'),
             password=config.get('SAAS', 'password'),
             db_name=config.get('GENERAL', 'database')
+        )
 
-            )
-        
     elif platform == "cpd":
-
-        connection.connect(
+        connections.connect(
             secure=True,
             server_pem_path=config.get('CPD', 'cpd_cert_path'),
             server_name=config.get('MILVUS', 'milvus_grpc_url'),
@@ -44,5 +78,6 @@ def setup_milvus_connection():
             password=config.get('CPD', 'password'),
             db_name=config.get('GENERAL', 'database')
         )
-    print(fmt.format("Milvus Connection Established"))
+
+    print(FMT.format("Milvus Connection Established via ORM"))
     warnings.filterwarnings("ignore")
