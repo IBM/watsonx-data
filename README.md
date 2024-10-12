@@ -9,7 +9,7 @@ Samples, tutorials and other information about watsonx.data
 IBM® watsonx.data is a modern data store based on an open Lakehouse architecture that combines the best elements of the data warehouse and data lakes. A key feature is the ability to access all data through a single point of entry with a shared and open metadata layer. The architecture includes the capability to use open table formats, such as Apache Iceberg, also makes it possible for multiple engines and tools to work with the same data concurrently. 
 
 ### An open, hybrid and governed data store
-IBM® watsonx.data™ data enables you to scale analytics and AI with all your data, wherever it resides, through: 
+IBM® watsonx.data™ data enables you to scale analytics and AI with all your data, wherever it resides, through::
 
 Open formats to access all your data through a single point of entry and share a single copy of data across your organization and workloads, without needing to migrate or recatalog, reducing ETL and data duplication.
 Integrated vectorized embedding capabilities to prepare your data for Retrieval Augment Generation (RAG) or other machine learning and generative AI (gen AI) use cases. 
