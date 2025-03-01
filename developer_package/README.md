@@ -47,7 +47,7 @@ a. Create a directory under which you wish to install watsonx.data developer ver
    ```
 b. Download and extract the developer package<br>
    ```
-   wget https://github.com/IBM/watsonx-data/releases/download/v2.0.3/ibm-lh-dev-2.1.1-353-20250207-091522-onprem-v2.1.1.tgz
+   wget https://github.com/IBM/watsonx-data/releases/download/v2.1.1/ibm-lh-dev-2.1.1-353-20250207-091522-onprem-v2.1.1.tgz
    ```  
    ```
    tar -xvf ibm-lh-dev-2.1.1-353-20250207-091522-onprem-v2.1.1.tgz
