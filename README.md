@@ -6,7 +6,7 @@ Samples, tutorials and other information about watsonx.data
 
 ## Introduction
 
-IBM® watsonx.data is a modern data store based on an open Lakehouse architecture that combines the best elements of the data warehouse and data lakes. A key feature is the ability to access all data through a single point of entry with a shared and open metadata layer. The architecture includes the capability to use open table formats, such as Apache Iceberg, also makes it possible for multiple engines and tools to work with the same data concurrently. 
+IBM® watsonx.data is a hybrid, open data lakehouse to power AI and analytics with all your data anywhere. A key feature is the ability to access all data through a single point of entry with a shared and open metadata layer. The architecture includes the capability to use open table formats, such as Apache Iceberg, also makes it possible for multiple engines and tools to work with the same data concurrently. 
 
 ### An open, hybrid and governed data store
 IBM® watsonx.data™ data enables you to scale analytics and AI with all your data, wherever it resides, through::
