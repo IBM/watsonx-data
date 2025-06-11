@@ -1,0 +1,55 @@
+apiVersion: postgresql.k8s.enterprisedb.io/v1
+kind: Cluster
+metadata:
+  name: ibm-lakehouse-standalone-cluster
+spec:
+  instances: 2  # This defines the number of replicas; set to 1 for one replica
+  imageName: icr.io/cpopen/edb/postgresql:14.17@sha256:45194b56f9fcb3af83158eb0297248364db40e8164fb4fe4f5656c58aeac3fa5
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: ibm-lh-edp-advanced-superuser
+  postgresql:
+    parameters:
+      max_connections: "500"
+  resources:
+    limits:
+      cpu: "1"
+      ephemeral-storage: 550Mi
+      memory: 1024M
+    requests:
+      cpu: 850m
+      ephemeral-storage: 50Mi
+      memory: 512M
+
+  # Bootstrap the replica by taking a pg_basebackup from the primary cluster
+  bootstrap:
+    recovery:
+      source: ibm-lh-postgres-edb  # Primary cluster 'ibm-lh-postgres-edb' in the 'cpd-instance' namespace
+
+  # Enable replica settings and point it to the primary cluster
+  replica:
+    enabled: true
+    source: ibm-lh-postgres-edb  # The primary cluster that the replica will follow
+
+  # Define storage for both primary and replica instances
+  storage:
+    storageClass: nfs-client
+    size: 10Gi  # Adjust storage size as necessary
+
+  # External clusters configuration for replication; this defines the connection to the primary
+  externalClusters:
+  - name: ibm-lh-postgres-edb
+    barmanObjectStore:
+      destinationPath: s3://<bucket name>/
+      serverName: ibm-lh-postgres-edb
+      endpointURL:  <endpoint url>
+      s3Credentials:
+        accessKeyId:
+          name: ibm-lh-replication-secret
+          key: S3_ACCESS_KEY
+        secretAccessKey:
+          name: ibm-lh-replication-secret
+          key: S3_SECRET_KEY
+      wal:
+        maxParallel: 8
+        compression: gzip
