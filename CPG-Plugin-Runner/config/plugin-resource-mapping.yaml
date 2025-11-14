@@ -1,0 +1,9 @@
+plugin-mapping:
+  java-access-plugin:
+    - iceberg
+  ranger-access-plugin:
+    - iceberg
+    - hive_data
+  python-access-plugin:
+    - hive_data
+
