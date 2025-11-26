@@ -1,0 +1,11 @@
+numpy==2.3.4
+pandas==2.3.3
+presto-python-client==0.8.4
+sentence-transformers==5.1.2
+streamlit==1.51.0
+torch==2.9.0
+transformers==4.57.1
+typing_extensions==4.15.0
+ipykernel
+urllib3
+notebook
