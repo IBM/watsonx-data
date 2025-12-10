@@ -24,7 +24,7 @@ This directory contains Jupyter notebooks demonstrating vector similarity search
    ```
 
 4. **Required Files**
-   - Have a csv test sample data file (eg. "test/amazon_reviews.csv" with column "reviewText")
+   - Have a csv test sample data file 
 
 5. **Presto/watsonx.data Setup**
    - Presto server should be up and running
