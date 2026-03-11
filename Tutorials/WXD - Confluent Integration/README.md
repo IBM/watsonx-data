@@ -14,8 +14,7 @@ The [`read_confluent_table_standalone.py`](read_confluent_table_standalone.py:1)
 
 ## Prerequisites
 
-- Apache Spark with Iceberg support
-- PySpark installed
+- Watsonx.data Instance with Spark Engine deployed
 - Confluent Tableflow API credentials (API key and secret)
 - Access to a Confluent Tableflow catalog
 
