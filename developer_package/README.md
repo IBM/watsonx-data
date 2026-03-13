@@ -73,6 +73,12 @@ c. Review the license files located under `$LH_ROOT_DIR/ibm-lh-dev/licenses`
    ```
    podman login $LH_REGISTRY -u iamapikey -p <credentials>
    ```
+
+   Note: Depending on how your entitlement key was generated, you may need to use "cp" for the username.
+   ```
+   podman login $LH_REGISTRY -u cp -p <entitlement_key>
+   ```
+
 4. Optional: You can customize your installation by editting the values in `$LH_ROOT_DIR/ibm-lh-dev/etc/launch_config.env`
 5. Run the setup script
    ```
@@ -106,8 +112,8 @@ $LH_ROOT_DIR/ibm-lh-dev/bin/stop
 ```
 
 ### User management
-When you run the `setup` command to install the developer version, it will create a default user `ibmlhadmin` with password `password`. This user has admin privileges on teh installation.
-You can a users by running the following command
+When you run the `setup` command to install the developer version, it will create a default user `ibmlhadmin` with password `password`. This user has admin privileges on the installation.
+You can add users by running the following command
 ```
 ./ibm-lh-dev/bin/user-mgmt add-user <user-name> Admin|User <user-password>
 ```
